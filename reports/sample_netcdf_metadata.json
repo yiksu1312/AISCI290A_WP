@@ -1,0 +1,342 @@
+[
+  {
+    "file": "data/2009_JanFeb/10m_u_component_of_wind_stream-oper_daily-mean.nc",
+    "sizes": {
+      "valid_time": 59,
+      "latitude": 105,
+      "longitude": 237
+    },
+    "selected_latitude": 33.75,
+    "selected_longitude": -117.75,
+    "start": "2009-01-01T00:00:00.000000000",
+    "end": "2009-02-28T00:00:00.000000000",
+    "attributes": {
+      "GRIB_centre": "ecmf",
+      "GRIB_centreDescription": "European Centre for Medium-Range Weather Forecasts",
+      "GRIB_subCentre": "0",
+      "Conventions": "CF-1.7",
+      "institution": "European Centre for Medium-Range Weather Forecasts",
+      "history": "2025-12-20T19:35 GRIB to CDM+CF via cfgrib-0.9.15.1/ecCodes-2.42.0 with {\"source\": \"10m_u_component_of_wind.grib\", \"filter_by_keys\": {\"stream\": [\"oper\"]}, \"encode_cf\": [\"parameter\", \"time\", \"geography\", \"vertical\"]}\nearthkit.transforms.aggregate.temporal.daily_reduce(10m_u_component_of_wind_stream-oper, how=mean, **{'time_shift': {'hours': 0}})"
+    },
+    "time_attributes": {
+      "long_name": "time",
+      "standard_name": "time",
+      "time_shift": "0 days 00:00:00"
+    },
+    "variables": {
+      "u10": {
+        "dims": [
+          "valid_time",
+          "latitude",
+          "longitude"
+        ],
+        "attributes": {
+          "GRIB_paramId": "165",
+          "GRIB_dataType": "an",
+          "GRIB_numberOfPoints": "24885",
+          "GRIB_typeOfLevel": "surface",
+          "GRIB_stepUnits": "1",
+          "GRIB_stepType": "instant",
+          "GRIB_gridType": "regular_ll",
+          "GRIB_uvRelativeToGrid": "0",
+          "GRIB_NV": "0",
+          "GRIB_Nx": "237",
+          "GRIB_Ny": "105",
+          "GRIB_cfName": "unknown",
+          "GRIB_cfVarName": "u10",
+          "GRIB_gridDefinitionDescription": "Latitude/Longitude Grid",
+          "GRIB_iDirectionIncrementInDegrees": 0.25,
+          "GRIB_iScansNegatively": "0",
+          "GRIB_jDirectionIncrementInDegrees": 0.25,
+          "GRIB_jPointsAreConsecutive": "0",
+          "GRIB_jScansPositively": "0",
+          "GRIB_latitudeOfFirstGridPointInDegrees": 50.0,
+          "GRIB_latitudeOfLastGridPointInDegrees": 24.0,
+          "GRIB_longitudeOfFirstGridPointInDegrees": -125.0,
+          "GRIB_longitudeOfLastGridPointInDegrees": -66.0,
+          "GRIB_missingValue": 3.4028234663852886e+38,
+          "GRIB_name": "10 metre U wind component",
+          "GRIB_shortName": "10u",
+          "GRIB_totalNumber": "0",
+          "GRIB_units": "m s**-1",
+          "long_name": "10 metre U wind component",
+          "units": "m s**-1",
+          "standard_name": "unknown",
+          "GRIB_surface": 0.0
+        }
+      }
+    }
+  },
+  {
+    "file": "data/2009_JanFeb/mean_sea_level_pressure_0_daily-mean.nc",
+    "sizes": {
+      "valid_time": 59,
+      "latitude": 105,
+      "longitude": 237
+    },
+    "selected_latitude": 33.75,
+    "selected_longitude": -117.75,
+    "start": "2009-01-01T00:00:00.000000000",
+    "end": "2009-02-28T00:00:00.000000000",
+    "attributes": {
+      "GRIB_centre": "ecmf",
+      "GRIB_centreDescription": "European Centre for Medium-Range Weather Forecasts",
+      "GRIB_subCentre": "0",
+      "Conventions": "CF-1.7",
+      "institution": "European Centre for Medium-Range Weather Forecasts",
+      "history": "2025-12-20T19:41 GRIB to CDM+CF via cfgrib-0.9.15.1/ecCodes-2.42.0 with {\"source\": \"mean_sea_level_pressure.grib\", \"filter_by_keys\": {\"stream\": [\"oper\"]}, \"encode_cf\": [\"parameter\", \"time\", \"geography\", \"vertical\"]}\nearthkit.transforms.aggregate.temporal.daily_reduce(mean_sea_level_pressure_0, how=mean, **{'time_shift': {'hours': 0}})"
+    },
+    "time_attributes": {
+      "long_name": "time",
+      "standard_name": "time",
+      "time_shift": "0 days 00:00:00"
+    },
+    "variables": {
+      "msl": {
+        "dims": [
+          "valid_time",
+          "latitude",
+          "longitude"
+        ],
+        "attributes": {
+          "GRIB_paramId": "151",
+          "GRIB_dataType": "an",
+          "GRIB_numberOfPoints": "24885",
+          "GRIB_typeOfLevel": "surface",
+          "GRIB_stepUnits": "1",
+          "GRIB_stepType": "instant",
+          "GRIB_gridType": "regular_ll",
+          "GRIB_uvRelativeToGrid": "0",
+          "GRIB_NV": "0",
+          "GRIB_Nx": "237",
+          "GRIB_Ny": "105",
+          "GRIB_cfName": "air_pressure_at_mean_sea_level",
+          "GRIB_cfVarName": "msl",
+          "GRIB_gridDefinitionDescription": "Latitude/Longitude Grid",
+          "GRIB_iDirectionIncrementInDegrees": 0.25,
+          "GRIB_iScansNegatively": "0",
+          "GRIB_jDirectionIncrementInDegrees": 0.25,
+          "GRIB_jPointsAreConsecutive": "0",
+          "GRIB_jScansPositively": "0",
+          "GRIB_latitudeOfFirstGridPointInDegrees": 50.0,
+          "GRIB_latitudeOfLastGridPointInDegrees": 24.0,
+          "GRIB_longitudeOfFirstGridPointInDegrees": -125.0,
+          "GRIB_longitudeOfLastGridPointInDegrees": -66.0,
+          "GRIB_missingValue": 3.4028234663852886e+38,
+          "GRIB_name": "Mean sea level pressure",
+          "GRIB_shortName": "msl",
+          "GRIB_totalNumber": "0",
+          "GRIB_units": "Pa",
+          "long_name": "Mean sea level pressure",
+          "units": "Pa",
+          "standard_name": "air_pressure_at_mean_sea_level",
+          "GRIB_surface": 0.0
+        }
+      }
+    }
+  },
+  {
+    "file": "data/2009_JanFeb/10m_v_component_of_wind_0_daily-mean.nc",
+    "sizes": {
+      "valid_time": 59,
+      "latitude": 105,
+      "longitude": 237
+    },
+    "selected_latitude": 33.75,
+    "selected_longitude": -117.75,
+    "start": "2009-01-01T00:00:00.000000000",
+    "end": "2009-02-28T00:00:00.000000000",
+    "attributes": {
+      "GRIB_centre": "ecmf",
+      "GRIB_centreDescription": "European Centre for Medium-Range Weather Forecasts",
+      "GRIB_subCentre": "0",
+      "Conventions": "CF-1.7",
+      "institution": "European Centre for Medium-Range Weather Forecasts",
+      "history": "2025-12-20T19:37 GRIB to CDM+CF via cfgrib-0.9.15.1/ecCodes-2.42.0 with {\"source\": \"10m_v_component_of_wind.grib\", \"filter_by_keys\": {\"stream\": [\"oper\"]}, \"encode_cf\": [\"parameter\", \"time\", \"geography\", \"vertical\"]}\nearthkit.transforms.aggregate.temporal.daily_reduce(10m_v_component_of_wind_0, how=mean, **{'time_shift': {'hours': 0}})"
+    },
+    "time_attributes": {
+      "long_name": "time",
+      "standard_name": "time",
+      "time_shift": "0 days 00:00:00"
+    },
+    "variables": {
+      "v10": {
+        "dims": [
+          "valid_time",
+          "latitude",
+          "longitude"
+        ],
+        "attributes": {
+          "GRIB_paramId": "166",
+          "GRIB_dataType": "an",
+          "GRIB_numberOfPoints": "24885",
+          "GRIB_typeOfLevel": "surface",
+          "GRIB_stepUnits": "1",
+          "GRIB_stepType": "instant",
+          "GRIB_gridType": "regular_ll",
+          "GRIB_uvRelativeToGrid": "0",
+          "GRIB_NV": "0",
+          "GRIB_Nx": "237",
+          "GRIB_Ny": "105",
+          "GRIB_cfName": "unknown",
+          "GRIB_cfVarName": "v10",
+          "GRIB_gridDefinitionDescription": "Latitude/Longitude Grid",
+          "GRIB_iDirectionIncrementInDegrees": 0.25,
+          "GRIB_iScansNegatively": "0",
+          "GRIB_jDirectionIncrementInDegrees": 0.25,
+          "GRIB_jPointsAreConsecutive": "0",
+          "GRIB_jScansPositively": "0",
+          "GRIB_latitudeOfFirstGridPointInDegrees": 50.0,
+          "GRIB_latitudeOfLastGridPointInDegrees": 24.0,
+          "GRIB_longitudeOfFirstGridPointInDegrees": -125.0,
+          "GRIB_longitudeOfLastGridPointInDegrees": -66.0,
+          "GRIB_missingValue": 3.4028234663852886e+38,
+          "GRIB_name": "10 metre V wind component",
+          "GRIB_shortName": "10v",
+          "GRIB_totalNumber": "0",
+          "GRIB_units": "m s**-1",
+          "long_name": "10 metre V wind component",
+          "units": "m s**-1",
+          "standard_name": "unknown",
+          "GRIB_surface": 0.0
+        }
+      }
+    }
+  },
+  {
+    "file": "data/2009_JanFeb/total_precipitation_0_daily-mean.nc",
+    "sizes": {
+      "valid_time": 59,
+      "latitude": 105,
+      "longitude": 237
+    },
+    "selected_latitude": 33.75,
+    "selected_longitude": -117.75,
+    "start": "2009-01-01T00:00:00.000000000",
+    "end": "2009-02-28T00:00:00.000000000",
+    "attributes": {
+      "GRIB_centre": "ecmf",
+      "GRIB_centreDescription": "European Centre for Medium-Range Weather Forecasts",
+      "GRIB_subCentre": "0",
+      "Conventions": "CF-1.7",
+      "institution": "European Centre for Medium-Range Weather Forecasts",
+      "history": "2025-12-20T19:43 GRIB to CDM+CF via cfgrib-0.9.15.1/ecCodes-2.42.0 with {\"source\": \"total_precipitation.grib\", \"filter_by_keys\": {\"stream\": [\"oper\"]}, \"encode_cf\": [\"parameter\", \"time\", \"geography\", \"vertical\"]}\nearthkit.transforms.aggregate.temporal.daily_reduce(total_precipitation_0, how=mean, **{'time_shift': {'hours': -1}})"
+    },
+    "time_attributes": {
+      "long_name": "time",
+      "standard_name": "time",
+      "time_shift": "-1 days +23:00:00"
+    },
+    "variables": {
+      "tp": {
+        "dims": [
+          "valid_time",
+          "latitude",
+          "longitude"
+        ],
+        "attributes": {
+          "GRIB_paramId": "228",
+          "GRIB_dataType": "fc",
+          "GRIB_numberOfPoints": "24885",
+          "GRIB_typeOfLevel": "surface",
+          "GRIB_stepUnits": "1",
+          "GRIB_stepType": "accum",
+          "GRIB_gridType": "regular_ll",
+          "GRIB_uvRelativeToGrid": "0",
+          "GRIB_NV": "0",
+          "GRIB_Nx": "237",
+          "GRIB_Ny": "105",
+          "GRIB_cfName": "unknown",
+          "GRIB_cfVarName": "tp",
+          "GRIB_gridDefinitionDescription": "Latitude/Longitude Grid",
+          "GRIB_iDirectionIncrementInDegrees": 0.25,
+          "GRIB_iScansNegatively": "0",
+          "GRIB_jDirectionIncrementInDegrees": 0.25,
+          "GRIB_jPointsAreConsecutive": "0",
+          "GRIB_jScansPositively": "0",
+          "GRIB_latitudeOfFirstGridPointInDegrees": 50.0,
+          "GRIB_latitudeOfLastGridPointInDegrees": 24.0,
+          "GRIB_longitudeOfFirstGridPointInDegrees": -125.0,
+          "GRIB_longitudeOfLastGridPointInDegrees": -66.0,
+          "GRIB_missingValue": 3.4028234663852886e+38,
+          "GRIB_name": "Total precipitation",
+          "GRIB_shortName": "tp",
+          "GRIB_totalNumber": "0",
+          "GRIB_units": "m",
+          "long_name": "Total precipitation",
+          "units": "m",
+          "standard_name": "unknown",
+          "GRIB_surface": 0.0
+        }
+      }
+    }
+  },
+  {
+    "file": "data/2009_JanFeb/2m_temperature_0_daily-mean.nc",
+    "sizes": {
+      "valid_time": 59,
+      "latitude": 105,
+      "longitude": 237
+    },
+    "selected_latitude": 33.75,
+    "selected_longitude": -117.75,
+    "start": "2009-01-01T00:00:00.000000000",
+    "end": "2009-02-28T00:00:00.000000000",
+    "attributes": {
+      "GRIB_centre": "ecmf",
+      "GRIB_centreDescription": "European Centre for Medium-Range Weather Forecasts",
+      "GRIB_subCentre": "0",
+      "Conventions": "CF-1.7",
+      "institution": "European Centre for Medium-Range Weather Forecasts",
+      "history": "2025-12-20T19:39 GRIB to CDM+CF via cfgrib-0.9.15.1/ecCodes-2.42.0 with {\"source\": \"2m_temperature.grib\", \"filter_by_keys\": {\"stream\": [\"oper\"]}, \"encode_cf\": [\"parameter\", \"time\", \"geography\", \"vertical\"]}\nearthkit.transforms.aggregate.temporal.daily_reduce(2m_temperature_0, how=mean, **{'time_shift': {'hours': 0}})"
+    },
+    "time_attributes": {
+      "long_name": "time",
+      "standard_name": "time",
+      "time_shift": "0 days 00:00:00"
+    },
+    "variables": {
+      "t2m": {
+        "dims": [
+          "valid_time",
+          "latitude",
+          "longitude"
+        ],
+        "attributes": {
+          "GRIB_paramId": "167",
+          "GRIB_dataType": "an",
+          "GRIB_numberOfPoints": "24885",
+          "GRIB_typeOfLevel": "surface",
+          "GRIB_stepUnits": "1",
+          "GRIB_stepType": "instant",
+          "GRIB_gridType": "regular_ll",
+          "GRIB_uvRelativeToGrid": "0",
+          "GRIB_NV": "0",
+          "GRIB_Nx": "237",
+          "GRIB_Ny": "105",
+          "GRIB_cfName": "unknown",
+          "GRIB_cfVarName": "t2m",
+          "GRIB_gridDefinitionDescription": "Latitude/Longitude Grid",
+          "GRIB_iDirectionIncrementInDegrees": 0.25,
+          "GRIB_iScansNegatively": "0",
+          "GRIB_jDirectionIncrementInDegrees": 0.25,
+          "GRIB_jPointsAreConsecutive": "0",
+          "GRIB_jScansPositively": "0",
+          "GRIB_latitudeOfFirstGridPointInDegrees": 50.0,
+          "GRIB_latitudeOfLastGridPointInDegrees": 24.0,
+          "GRIB_longitudeOfFirstGridPointInDegrees": -125.0,
+          "GRIB_longitudeOfLastGridPointInDegrees": -66.0,
+          "GRIB_missingValue": 3.4028234663852886e+38,
+          "GRIB_name": "2 metre temperature",
+          "GRIB_shortName": "2t",
+          "GRIB_totalNumber": "0",
+          "GRIB_units": "K",
+          "long_name": "2 metre temperature",
+          "units": "K",
+          "standard_name": "unknown",
+          "GRIB_surface": 0.0
+        }
+      }
+    }
+  }
+]
