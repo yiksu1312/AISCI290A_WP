@@ -18,8 +18,8 @@ The current task is to predict tomorrow's daily mean temperature after today's d
 
 ### Notebook guide
 
-- **`notebooks/01_dataload.ipynb` — initial loading practice.** This is where I started working with `glob` and `xarray`. In the loading walkthrough, I opened one temperature file, looked at its dimensions and the `t2m` variable, and then combined the 12 temperature files. I also worked through checking whether the dates were sorted, unique, and continuous.
-- **`notebooks/02_progress1027.ipynb` — main progress notebook.** This is the notebook for the temperature exploration and first prediction experiment described below: maps, line plots, rolling averages, persistence, and temperature-only linear regression.
+- **`notebooks/01_data_audit.ipynb` — loading data and checking dates.** This is where I started working with `glob` and `xarray`. In the loading walkthrough, I opened one temperature file, looked at its dimensions and the `t2m` variable, and then combined the 12 temperature files. I also worked through checking whether the dates were sorted, unique, and continuous.
+- **`notebooks/02_temperature_only_v1.ipynb` — version 1: temperature only.** This is the notebook for the temperature exploration and first prediction experiment described below: maps, line plots, rolling averages, persistence, and temperature-only linear regression.
 
 ### What I explored
 
