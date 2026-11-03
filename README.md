@@ -1,6 +1,6 @@
 # Weather Prediction Near Irvine
 
-Yikai (Constantine) Su | AI SCI 290A | UCI MAAIS
+Constantine Su | AI SCI 290A 
 
 Instructor: Daniel Whiteson
 
