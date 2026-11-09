@@ -1,124 +1,73 @@
 # Weather Prediction Near Irvine
 
-Constantine Su | AI SCI 290A 
+Constantine Su | AI SCI 290A
 
-Instructor: Daniel Whiteson
+## Project materials
 
-Progress for October 27, 2026
+| Item | Link |
+| --- | --- |
+| Results, plots, and what I learned | [Notebooks](notebooks/) and [Plots](plots/) |
+| Code and saved outputs | [Notebooks](notebooks/) |
+| Slides | [Canva presentation](https://www.canva.com/d/fS7VQVGeyOhkQMm) |
+| Presentation video | [Watch on YouTube (4 min 37 sec)](https://youtu.be/yJGBQWXjlaQ) |
 
 ## 1. The question
 
-**Can recent local weather improve next-day temperature predictions near Irvine compared with assuming tomorrow will be like today?**
+Can today's weather help me predict tomorrow's temperature, wind, and precipitation near Irvine? Can I also predict hot days, or look two or three days ahead?
 
-I chose Irvine because I live and study here. I am using the course-provided ERA5 data for 2009 and 2010. The supplied data cover temperature, pressure, precipitation, and wind across the continental US. My experiments so far use temperature only.
-
-The current task is to predict tomorrow's daily mean temperature after today's daily values are available. I use the grid point at **33.75°N, 117.75°W**, near Irvine. This is gridded reanalysis data, not an Irvine weather station or a live forecast service. I still need to check the point's land location and how well it represents the area.
+I use ERA5 data from 2009-2010 at **33.75 N, 117.75 W**. This is one point on a weather grid near Irvine. I make predictions after today's daily weather values are available.
 
 ## 2. Exploratory
 
-### Notebook guide
+I started by playing around with maps and line plots. Then I plotted temperature and precipitation at the Irvine point over time. I also made 3-day and 7-day averages of temperature, pressure, u, v, and precipitation to see whether recent weather might help.
 
-- **`notebooks/01_data_audit.ipynb` — loading data and checking dates.** This is where I started working with `glob` and `xarray`. In the loading walkthrough, I opened one temperature file, looked at its dimensions and the `t2m` variable, and then combined the 12 temperature files. I also worked through checking whether the dates were sorted, unique, and continuous.
-- **`notebooks/02_temperature_only_v1.ipynb` — version 1: temperature only.** This is the notebook for the temperature exploration and first prediction experiment described below: maps, line plots, rolling averages, persistence, and temperature-only linear regression.
+Some things needed a closer look. I zoomed in on a pressure dip before keeping it. For precipitation, June had more positive values than February in 2009, but those values were much smaller. Counting days above zero did not tell the whole story.
 
-### What I explored
+![Temperature model comparison on January-June 2010 validation dates](plots/temperature_models.png)
 
-I loaded the temperature files using `xarray`, combined them by their coordinates, and converted temperature from Kelvin to Celsius by subtracting 273.15. The combined data have 730 daily timestamps from January 1, 2009 to December 31, 2010, with 105 latitudes and 237 longitudes.
+The notebooks include the model scores and my observations. All the saved plots are in [plots](plots/).
 
-I made several plots to get a feel for the data:
+## 3. Baseline and models
 
-- **A temperature map for January 1, 2009.** The northern part of the plotted region was generally colder than the southern part.
-- **A west-to-east line at 33.75°N.** Temperature varied substantially, but did not consistently increase or decrease from west to east.
-- **A south-to-north line at 117.75°W.** Temperature generally decreased toward the north, with local rises and falls.
+I start with persistence: predict that tomorrow will be the same as today. Then I try linear regression with recent averages, other weather variables, and nearby points. I also try predicting the change and using a small neural network. For positive-or-zero precipitation and hot days, I use logistic regression.
 
-The two line plots were a chance to play around with selecting data and compare the spatial patterns along lines crossing the grid point near Irvine. They are exploratory exercises, not inputs to the current model. They show different locations on one day, not changes over time. Terrain could help explain some variation, but I have not checked that explanation.
+I check three periods: Jan-Feb, Mar-Apr, and May-Jun 2010. Each time, I train on earlier days. Any scaling and hot-day cutoff come from training data only. For two- and three-day predictions, I also check that the training answers would already be known when I make the first forecast.
 
-I then plotted the **2009–2010 daily temperature series at the selected point**. Temperatures were generally higher in summer and lower in winter, with noticeable day-to-day fluctuations.
+These results use the same **181 validation days**:
 
-Finally, I calculated **trailing 3-day and 7-day averages** and plotted them with the daily temperatures. Both smooth the fluctuations; the 7-day average is smoother and responds more slowly to sudden changes. Each average includes today and preceding days only. These averages have been plotted but have **not yet been used in a regression model**.
+| What I tried | What happened |
+| --- | --- |
+| Temperature: persistence | MAE 0.901 C, RMSE 1.148 C |
+| Temperature: weather averages and nearby points | MAE 0.742 C, RMSE 0.954 C |
+| Predict the temperature change | Same linear predictions as predicting tomorrow directly |
+| A small neural network | Worse than linear regression in this trial |
+| Temperature two and three days ahead | Both beat persistence; RMSE rises to 1.657 and 1.941 C |
+| Predict the precipitation value | Nearby points give the lowest RMSE; always zero gives the lowest MAE |
+| Predict hot days | Only five hot validation days; logistic regression finds one and persistence finds two |
 
-## 3. Baseline and first model
+Adding more inputs did not always help. Pressure barely changed the temperature scores, and wind helped overall but made May-June worse.
 
-### Prediction table and time split
+## 4. Status
 
-I converted the local temperature series into a pandas DataFrame. Each row contains today's temperature and tomorrow's observed temperature, created using `shift(-1)` after checking daily continuity. Removing the final row with no next-day target leaves 729 samples.
+The notebooks, plots, slides, and presentation video are ready. The links are at the top of this README.
 
-I split samples by the **date being predicted**, not just the date of the input:
+| Notebook | What I worked on |
+| --- | --- |
+| [01_data_audit](notebooks/01_data_audit.ipynb) | Loading and checking the files |
+| [02_temperature_only_v1](notebooks/02_temperature_only_v1.ipynb) | Temperature plots, persistence, linear regression, and averages |
+| [03_temperature_and_other_variables](notebooks/03_temperature_and_other_variables.ipynb) | More weather inputs, nearby points, temperature change, a small network, longer predictions, and hot days |
+| [04_wind_prediction](notebooks/04_wind_prediction.ipynb) | Predicting u and v, then trying averages and pressure |
+| [05_precipitation_prediction](notebooks/05_precipitation_prediction.ipynb) | Exploring precipitation, predicting positive or zero, and predicting the values |
+| [06_final_evaluation](notebooks/06_final_evaluation.ipynb) | Checking the earlier chosen models on July-December 2010 |
 
-| Set | Target dates | Samples | Purpose |
-| --- | --- | ---: | --- |
-| Training | January 2–December 31, 2009 | 364 | Fit linear regression |
-| Validation | January 1–June 30, 2010 | 181 | Compare predictions |
-| Test | July 1–December 31, 2010 | 184 | Reserved for final evaluation |
+[Project goals](PROJECT_GOALS.md) shows where I tried each part of the assignment.
 
-This split is provisional. Validation and test cover different seasons, and two years provide limited seasonal coverage. I would like to discuss this choice with Daniel. The test set has been set aside but its prediction performance has not been evaluated.
+I only have two years at one grid point, and very few hot days in validation. I still need to check whether the selected point is on land. The precipitation files contain daily averages, but I do not know which hours were used. I work with the saved values without calling them daily rainfall totals.
 
-### Persistence
+I had already checked temperature on July-December 2010 in an earlier version. Notebook 06 reports the chosen models' results for that period; it does not test every extra model in 03 and 05. I would need unused dates for a completely new check.
 
-**Predicted temperature tomorrow = observed temperature today.**
+## Running the notebooks
 
-This baseline needs no training. I calculated its validation MAE and RMSE and plotted predictions against actual temperatures on the same target dates. The prediction follows the actual pattern with a one-day lag, making mistakes when temperature changes suddenly.
+The saved outputs can be viewed without the raw data. To run the code again, put the course NetCDF files under `data/data/`. The raw files and my local Python environment are not on GitHub.
 
-### Linear regression using today's temperature
-
-I trained `LinearRegression()` on the training set with one input: today's temperature. The fitted equation is:
-
-```text
-Predicted temperature tomorrow = 0.953983 × today's temperature + 0.7772236
-```
-
-I used the fitted model to predict the same 181 validation targets as persistence.
-
-| Model | Validation MAE (°C) | Validation RMSE (°C) |
-| --- | ---: | ---: |
-| Persistence | 0.901 | 1.148 |
-| Linear regression: today's temperature | 0.873 | 1.129 |
-
-Linear regression reduced MAE by about **3.1%** and RMSE by about **1.6%**. This is a small improvement on this validation period, not evidence that it will always perform better.
-
-## 4. Status and plan
-
-### Where I stopped
-
-I have finished the initial temperature plots, rolling-average exploration, persistence evaluation, and the first temperature-only linear regression comparison. I am pausing here before adding more features. I have not yet trained a model with rolling averages, used the other weather variables, or evaluated the final test set.
-
-### Immediate next step
-
-Add the existing trailing 3-day and 7-day temperature averages as regression inputs alongside today's temperature. Handle their initial missing values, keep the same target-date split, and compare against the existing models on matching validation dates. The question is whether recent temperature history adds useful information beyond today's temperature.
-
-### Overall project plan
-
-1. **Temperature starting point — completed:** load temperature, explore it with plots, calculate rolling averages, and compare persistence with one-feature linear regression.
-2. **Recent temperature history — next:** add the 3-day and 7-day averages to linear regression.
-3. **Other local weather variables — planned:** inspect pressure, wind, and precipitation; align them in a daily table; make precipitation maps and time-series plots; add current values and trailing averages to the temperature model.
-4. **Further temperature experiments — planned:** predict temperature change and reconstruct temperature, try neighboring grid points, try a small neural network, and extend forecasts to two and three days ahead.
-5. **Other targets — planned:** study precipitation prediction with a simple baseline and attention to dry days; classify high-temperature days using a fixed 75th-percentile threshold calculated from training temperatures only.
-6. **Final evaluation and presentation — planned:** choose the approach using validation results, evaluate it on the reserved test period, and organize the notebook, figures, and final video.
-
-### Questions and things to resolve
-
-- Is the chosen point on land and a reasonable representation of weather near Irvine?
-- What is the exact precipitation aggregation and accumulation interval? I need to confirm this before labeling values as mm/day or using them in predictions.
-- What time split is most useful with only two years and strong seasonal changes?
-
-I am building this step by step with the Python, pandas, plotting, regression, and evaluation ideas from AI SCI 210, 220, and 290A. I will keep the README updated as the experiments progress.
-
-## Working on the project
-
-- `notebooks/`: loading practice and the main progress notebook.
-- `data/data/`: course data, kept locally and excluded from GitHub.
-- `environment.yml`: project dependencies.
-
-Local project folder:
-
-```text
-C:\Users\giorg\Desktop\290A\Project1_WeatherPrediction
-```
-
-Open `Project1_WeatherPrediction.code-workspace` in VS Code and select **Python (290A Weather)** as the notebook kernel.
-
-To activate the existing environment in a project PowerShell terminal:
-
-```powershell
-. .\activate.ps1
-```
+Open `Project1_WeatherPrediction.code-workspace` in VS Code and choose the 290A Python environment. The packages are listed in [environment.yml](environment.yml). Some early notebooks use my Windows data path, so that path needs changing on another computer.
