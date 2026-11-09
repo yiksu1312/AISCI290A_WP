@@ -23,7 +23,7 @@ I started by playing around with maps and line plots. Then I plotted temperature
 
 Some things needed a closer look. I zoomed in on a pressure dip before keeping it. For precipitation, June had more positive values than February in 2009, but those values were much smaller. Counting days above zero did not tell the whole story.
 
-![Temperature model comparison on January-June 2010 validation dates](plots/temperature_models.png)
+![Temperature model comparison: validation MAE on January-June 2010 dates](plots/temperature_models_mae.png)
 
 The notebooks include the model scores and my observations. All the saved plots are in [plots](plots/).
 
