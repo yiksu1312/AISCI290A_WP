@@ -49,8 +49,6 @@ Adding more inputs did not always help. Pressure barely changed the temperature 
 
 ## 4. Status
 
-The notebooks, plots, slides, and presentation video are ready. The links are at the top of this README.
-
 | Notebook | What I worked on |
 | --- | --- |
 | [01_data_audit](notebooks/01_data_audit.ipynb) | Loading and checking the files |
@@ -59,15 +57,3 @@ The notebooks, plots, slides, and presentation video are ready. The links are at
 | [04_wind_prediction](notebooks/04_wind_prediction.ipynb) | Predicting u and v, then trying averages and pressure |
 | [05_precipitation_prediction](notebooks/05_precipitation_prediction.ipynb) | Exploring precipitation, predicting positive or zero, and predicting the values |
 | [06_final_evaluation](notebooks/06_final_evaluation.ipynb) | Checking the earlier chosen models on July-December 2010 |
-
-[Project goals](PROJECT_GOALS.md) shows where I tried each part of the assignment.
-
-I only have two years at one grid point, and very few hot days in validation. I still need to check whether the selected point is on land. The precipitation files contain daily averages, but I do not know which hours were used. I work with the saved values without calling them daily rainfall totals.
-
-I had already checked temperature on July-December 2010 in an earlier version. Notebook 06 reports the chosen models' results for that period; it does not test every extra model in 03 and 05. I would need unused dates for a completely new check.
-
-## Running the notebooks
-
-The saved outputs can be viewed without the raw data. To run the code again, put the course NetCDF files under `data/data/`. The raw files and my local Python environment are not on GitHub.
-
-Open `Project1_WeatherPrediction.code-workspace` in VS Code and choose the 290A Python environment. The packages are listed in [environment.yml](environment.yml). Some early notebooks use my Windows data path, so that path needs changing on another computer.
